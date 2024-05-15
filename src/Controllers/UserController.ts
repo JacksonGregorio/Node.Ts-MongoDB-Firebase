@@ -1,15 +1,27 @@
 import { Request, Response } from 'express';
 import User, { IUser } from '../Models/User';
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 
 class UserController {
     
     async createUser(req: Request, res: Response) {
-        const newUser: IUser = new User(req.body);
         const { user_Email, user_Name, user_NickName, user_cpf, Password } = req.body;
+
     
         if(!user_Email || !user_Name || !user_NickName || !user_cpf || !Password) {
             return res.status(422).json({message: "Todos os campos são necessários"});
         }
+
+        const hashedPassword = await bcrypt.hash(Password, 10);
+
+        const newUser: IUser = new User({
+            user_Email,
+            user_Name,
+            user_NickName,
+            user_cpf,
+            Password: hashedPassword
+        });
     
         await newUser.save();
         res.status(201).json(newUser);

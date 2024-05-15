@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import UserRoutes from './UserRoutes';
+import AuthRoutes from './AuthRoutes';
 
 const routes = (app: express.Application) => {
     
@@ -15,6 +16,7 @@ const routes = (app: express.Application) => {
     app.use(
         express.json(),
         UserRoutes,
+        AuthRoutes
     );
 }
 

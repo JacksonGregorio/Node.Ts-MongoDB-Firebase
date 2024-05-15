@@ -1,8 +1,6 @@
 import mongoose, { Document, Schema } from 'mongoose';
 
 export interface IUser extends Document {
-    name: string;
-    email: string;
     password: string;
     password_token: string;
     password_refresh: Date;
