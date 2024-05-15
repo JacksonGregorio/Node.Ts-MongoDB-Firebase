@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import bucket from "./DBfirebaseConnection";
 
 dotenv.config();
 
@@ -12,5 +13,7 @@ mongoose.connect(uri)
   .catch(err => console.log(err))
 
 let db = mongoose.connection;
+
+console.log(bucket);
 
 export default db;

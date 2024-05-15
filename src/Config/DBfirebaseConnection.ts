@@ -1,8 +1,20 @@
 import admin from 'firebase-admin';
 import serviceAccount from './FireBaseConnection.json';
+import dotenv from 'dotenv';
+
+dotenv.config();
+
+const firebaseConfig: admin.ServiceAccount = {
+    projectId: process.env.project_id || "",
+    privateKey: (process.env.private_key || "").replace(/\\n/g, '\n'),
+    clientEmail: process.env.client_email || "",
+};
+
+console.log(firebaseConfig);
+
 
 admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount as admin.ServiceAccount),
+  credential: admin.credential.cert(firebaseConfig),
   storageBucket: "gs://estamparia-db.appspot.com"
 });
 
