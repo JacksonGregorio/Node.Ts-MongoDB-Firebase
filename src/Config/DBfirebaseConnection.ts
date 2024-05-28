@@ -22,3 +22,4 @@ console.log('Firebase connected');
 const bucket = admin.storage().bucket();
 
 export default bucket;
+
