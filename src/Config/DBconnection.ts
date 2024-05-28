@@ -14,6 +14,4 @@ mongoose.connect(uri)
 
 let db = mongoose.connection;
 
-console.log(bucket);
-
 export default db;

@@ -9,9 +9,6 @@ const firebaseConfig: admin.ServiceAccount = {
     clientEmail: process.env.client_email || "",
 };
 
-console.log(firebaseConfig);
-
-
 admin.initializeApp({
   credential: admin.credential.cert(firebaseConfig),
   storageBucket: "gs://estamparia-db.appspot.com"

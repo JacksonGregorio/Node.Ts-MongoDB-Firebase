@@ -23,6 +23,7 @@ class AuthController {
         const token = jwt.sign({ _id: user._id }, JWT_SECRET , { expiresIn: '10h' });
 
         res.json({ token, user: { user_Email: user.user_Email, user_Name: user.user_Name }});
+        res.set('Authorization', `Bearer ${token}`).json({ user: { user_Email: user.user_Email, user_Name: user.user_Name }});
     }
 }
 
