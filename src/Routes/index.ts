@@ -15,8 +15,8 @@ const routes = (app: express.Application) => {
 
     app.use(
         express.json(),
-        UserRoutes,
-        AuthRoutes
+        AuthRoutes,
+        UserRoutes
     );
 }
 
